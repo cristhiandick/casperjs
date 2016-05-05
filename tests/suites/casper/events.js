@@ -28,15 +28,15 @@ casper.test.begin('filters', 3, function(test) {
 });
 
 casper.test.begin('events order', 2, function(test) {
-    casper.mowed = "Moo";
-    casper.on("mow", function() {
-        this.mowed = casper.mowed + " Moo";
+    casper.mooed = "Moo";
+    casper.on("mooed", function() {
+        this.mooed = casper.mooed + " Moo";
     });
     casper.emit("mow");
-    test.assertEquals(casper.mowed, "Moo Moo", "mowed has the correct value");
+    test.assertEquals(casper.mowed, "Moo Moo", "mooed has the correct value");
 
     casper.prependListener("mow", function() {
-        this.mowed = this.mowed + " Boo";
+        this.mooed = this.mooed + " Boo";
     });
     casper.emit("mow");
     test.assertEquals(casper.mowed, "Moo Moo Boo Moo", "mowed has the correct value");
